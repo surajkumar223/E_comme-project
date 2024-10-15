@@ -61,7 +61,7 @@ const UpdateProductPage = () => {
 //   setLoading(true);
   try {
       const productTemp = await getDoc(doc(fireDB, "products", id))
-      //   console.log(product.data())
+      //   // console.log(product.data())
       const product = productTemp.data();
       setProduct({
           title: product?.title,
@@ -76,7 +76,7 @@ const UpdateProductPage = () => {
     //   setLoading(false);
   } 
   catch (error) {
-      console.log(error);
+      // console.log(error);
     //   setLoading(false);
   }
 }
@@ -89,7 +89,7 @@ const updateProduct = async () => {
     //   setLoading(false);
       navigate('/admin-dashboard')
   } catch(error) {
-      console.log(error)
+      // console.log(error)
       toast.error("product is not updated");
     //   setLoading(false);
   }

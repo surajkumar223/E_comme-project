@@ -8,7 +8,7 @@ function Navbar() {
     const {cart} = useContext(CartContext);
     // get user from localStorage 
         const user = JSON.parse(localStorage.getItem('users'));
-    console.log("asdf",user);
+    // console.log("asdf",user);
 
     // navigate 
     const navigate = useNavigate();
@@ -60,7 +60,7 @@ function Navbar() {
 
     )
 
-    console.log({ navList });
+    // console.log({ navList });
 
     return (
         <nav className="sticky top-0 bg-pink-600">

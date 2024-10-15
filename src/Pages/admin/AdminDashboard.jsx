@@ -10,7 +10,7 @@ function AdminDashboard() {
     //user
     const user = JSON.parse(localStorage.getItem('users'));
     const {getAllProduct} = useStateContext();
-   // console.log(getAllProduct.length);
+   // // console.log(getAllProduct.length);
     
     return (
         <Layoutc>

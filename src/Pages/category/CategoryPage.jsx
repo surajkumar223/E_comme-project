@@ -12,7 +12,7 @@ function CategoryPage() {
 
     // filter product 
     const filterProduct = getAllProduct.filter((obj) => obj.category.includes(categoryname));
-    // console.log("ddddffffffffff", filterProduct);
+    // // console.log("ddddffffffffff", filterProduct);
 
     return (
         <Layoutc>

@@ -27,7 +27,7 @@ const userloginfunction= async()=>{
     setloading(true);
     try{
        const users= await signInWithEmailAndPassword(auth, userLogin.email, userLogin.password);
-        console.log("This is information about id= ",users.user);
+        // console.log("This is information about id= ",users.user);
         try {
             const q = query(
                 collection(fireDB, "user"),
@@ -53,12 +53,12 @@ const userloginfunction= async()=>{
             });
             return () => data;
         } catch (error) {
-            console.log("This is error= ",error);
+            // console.log("This is error= ",error);
             setloading(false);
             
         }
     } catch (error) {
-        console.log("This is error= ",error);
+        // console.log("This is error= ",error);
         setloading(false);
             toast.error("Login Failed");
     }
