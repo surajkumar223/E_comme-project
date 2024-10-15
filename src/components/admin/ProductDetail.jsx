@@ -17,7 +17,7 @@ const ProductDetail = () => {
             getAllProductFunction();
             setloading(false);
         } catch (error) {
-            // console.log(error)
+            console.log(error)
             setloading(false)
 
 

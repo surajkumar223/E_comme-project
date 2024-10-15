@@ -19,10 +19,10 @@ const products = [
 function UserDashboard() {
  // user
  const user = JSON.parse(localStorage.getItem('users'));
-  // console.log("this is user ",user);
+  console.log("this is user ",user);
   
 
- // console.log("this is userdashboard for deteails.",user)
+ console.log("this is userdashboard for deteails.",user)
   return (
          <Layoutc>
                         <div className="container px-4 py-5 mx-auto lg:py-8">

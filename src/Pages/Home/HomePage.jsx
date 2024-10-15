@@ -10,7 +10,7 @@ import { useStateContext } from '../../context/myState'
 function HomePage() {
   const {loading, setloading} = useStateContext();
 
-  // console.log("shihj", { loading });
+  console.log("shihj", { loading });
   return (
     <Layoutc>
       <HeroSection />

@@ -27,7 +27,7 @@
 // function usefile() {
   
 //   function signup(){
-//     createUserWithEmailAndPassword(auth,"suraj@gmail.com", "Suraj@1234#").then((value)=> // console.log(value));
+//     createUserWithEmailAndPassword(auth,"suraj@gmail.com", "Suraj@1234#").then((value)=> console.log(value));
 
 //   }
 //   return (

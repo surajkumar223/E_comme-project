@@ -11,7 +11,7 @@ function Signup() {
     
    const {loading, setloading} = useStateContext();
     
-//   // console.log("loading.l",useStateContext());
+//   console.log("loading.l",useStateContext());
   
    //navigate 
    const navigate= useNavigate();
@@ -68,11 +68,11 @@ function Signup() {
                     setloading(false);
                     navigate('/login')
     } catch (error) {
-        // console.log(error);
+        console.log(error);
         setloading(false);
     }
     }   
-    // console.log("loading.2",loading);
+    console.log("loading.2",loading);
    
   return (
    

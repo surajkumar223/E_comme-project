@@ -5,15 +5,10 @@ import { useStateContext } from '../../context/myState';
 import Loader from '../loader/Loader';
 import toast from 'react-hot-toast';
 import { CartContext } from '../../Contexapi/ConteProvider';
-import { useStateContext1 } from '../../Contexapi/Content_provider';
 
 function HomePageProductCard() {
 
     const { cart, dispatch } = useContext(CartContext);//cartconrext is defined in Contexapi/ConteProvider.
-
-    const { cart1, setCart1 } = useStateContext1();
-
-    
     // getting cart and dispatch from CartContext
     const navigate = useNavigate();
     const { loading, getAllProduct } = useStateContext();
@@ -21,18 +16,14 @@ function HomePageProductCard() {
 
     const addCart = (item) => {
         dispatch({ type: "Add", product: item });
-        setCart1([...cart1, { type: "Add", product: item }]);
-        console.log(cart1)
-
         toast.success("Add to cart");
     }
     // Function to remove product from the cart
     const deleteCart = (item) => {
-        // setCart1([...cart, { type: "Add", product: item }])
         dispatch({ type: 'Remove', product: item });
         toast.error('Removed from cart');
     }
-            // console.log("cart",cart,"dispatch",dispatch);
+            console.log("cart",cart,"dispatch",dispatch);
             
     return (
         <div className="mt-10">

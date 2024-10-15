@@ -10,7 +10,7 @@ function ProductInfo() {
     const { loading, setloading } = useStateContext();
     const [product, setProduct] = useState('');
     const { id } = useParams();
-    // console.log("adfid", id);
+    console.log("adfid", id);
 
     const getProductData = async () => {
         setloading(true);
@@ -19,12 +19,12 @@ function ProductInfo() {
             setProduct(productTemp.data());
             setloading(false)
         } catch (error) {
-            // console.log(error)
+            console.log(error)
             setloading(false)
 
         }
     }
-    // console.log("this is data", product);
+    console.log("this is data", product);
 
     useEffect(() => {
         getProductData()
