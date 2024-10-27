@@ -5,9 +5,12 @@ import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { fireDB } from '../../firebase/FirebaseConfig';
 import { Loader } from 'lucide-react';
+import { useStateContext1 } from '../../Contexapi/Content_provider';
+import toast from 'react-hot-toast';
 
 function ProductInfo() {
     const { loading, setloading } = useStateContext();
+    const { cart1, setCart1 } = useStateContext1();
     const [product, setProduct] = useState('');
     const { id } = useParams();
     console.log("adfid", id);
@@ -16,7 +19,10 @@ function ProductInfo() {
         setloading(true);
         try {
             const productTemp = await getDoc(doc(fireDB, "products", id))
-            setProduct(productTemp.data());
+        
+            
+            setProduct({ ...productTemp.data(), id: productTemp.id });
+            
             setloading(false)
         } catch (error) {
             console.log(error)
@@ -24,11 +30,35 @@ function ProductInfo() {
 
         }
     }
-    console.log("this is data", product);
+    console.log("this is data454555555555555", product);
+
+    const addCart = (product) => {
+        setCart1([...cart1, { type: "Add", product: product }]);
+        console.log("3333333333333 product 4444444444444444",product);
+        toast.success('Add to cart', { duration: 1000,   });
+    }
+    // Function to remove product from the cart
+    const deleteCart = (product) => {
+        const updatedCart = cart1.filter(cartItem => cartItem.product.id !== id);
+        setCart1(updatedCart);
+        toast.error('Removed from cart', { duration: 1000,   });
+    }
+
+    
 
     useEffect(() => {
         getProductData()
     }, [])
+    useEffect(() => {
+        console.log("cart1 has been updated:", cart1);
+        
+    }, [cart1]);
+
+    //  Check if cart is an array and item has an id
+    // const isInCart = Array.isArray(cart1) && cart1.some(cartItem => cartItem.product.id === id);
+    const isInCart = cart1.some(cartItem => cartItem.product.id === id);
+    console.log("this is product id-------", id);
+
     return (
         <Layoutc>
             <section className="py-5 lg:py-16 font-poppins dark:bg-gray-800">
@@ -40,6 +70,8 @@ function ProductInfo() {
                     </>
                     :
                     <>
+                    
+
                         <div className="max-w-6xl px-4 mx-auto">
                             <div className="flex flex-wrap mb-24 -mx-4">
                                 <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
@@ -131,10 +163,40 @@ function ProductInfo() {
                                         </div>
                                         <div className="mb-6 " />
                                         <div className="flex flex-wrap items-center mb-6">
-                                            <button
-                                                className="w-full px-4 py-3 text-center text-pink-600 bg-pink-100 border border-pink-600 hover:bg-pink-600 hover:text-gray-100 rounded-xl"
-                                            >Add to cart
-                                            </button>
+                                           {
+
+                                                isInCart ? (
+                                                    <button
+                                                        onClick={() => deleteCart(product)}
+                                                        className="bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
+                                                    >
+                                                        Remove from Cart
+                                                    </button>
+                                                ) : (
+                                                    <button
+                                                        onClick={() => addCart(product)}
+                                                        className="bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
+                                                    >
+                                                        Add to Cart
+                                                    </button>
+                                                )} 
+
+
+
+                                           {/* <button
+                                                        onClick={() => deleteCart(product)}
+                                                        className="bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
+                                                    >
+                                                        Remove from Cart
+                                                    </button>
+                                             
+                                                    <button
+                                                        onClick={() => addCart(product)}
+                                                        className="bg-pink-500 hover:bg-pink-600 w-full text-white py-[4px] rounded-lg font-bold"
+                                                    >
+                                                        Add to Cart
+                                                    </button>   */}
+
                                         </div>
                                     </div>
                                 </div>

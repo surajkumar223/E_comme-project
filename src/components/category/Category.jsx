@@ -34,6 +34,7 @@ const category = [
         name: 'books'
     }
 ]
+console.log("this is fac");
 
 const Category = () =>{
     const navigate = useNavigate();

@@ -3,12 +3,14 @@ import { json, Link, Navigate, useNavigate } from 'react-router-dom';
 
 import Searchbar from '../searchbar/Searchbar';
 import { CartContext } from '../../Contexapi/ConteProvider';
+import { useStateContext1 } from '../../Contexapi/Content_provider';
 
 function Navbar() {
     const {cart} = useContext(CartContext);
+    const { cart1 } = useStateContext1();   
     // get user from localStorage 
         const user = JSON.parse(localStorage.getItem('users'));
-    console.log("asdf",user);
+    // console.log("asdf",user);
 
     // navigate 
     const navigate = useNavigate();
@@ -53,14 +55,14 @@ function Navbar() {
             {/* Cart */}
             <li>
                 <Link to={'/CartPage'}>
-                    Cart({cart.length})
+                    Cart({cart1.length})
                 </Link>
             </li>
         </ul>
 
     )
 
-    console.log({ navList });
+    // console.log({ navList });
 
     return (
         <nav className="sticky top-0 bg-pink-600">

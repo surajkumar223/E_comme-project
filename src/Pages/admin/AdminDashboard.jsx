@@ -9,7 +9,7 @@ import { useStateContext } from '../../context/myState'
 function AdminDashboard() {
     //user
     const user = JSON.parse(localStorage.getItem('users'));
-    const {getAllProduct} = useStateContext();
+    const {getAllProduct,getAllUser} = useStateContext();
    // console.log(getAllProduct.length);
     
     return (
@@ -132,7 +132,7 @@ function AdminDashboard() {
                                                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                                             </svg>
                                         </div>
-                                        <h2 className="text-3xl font-medium text-pink-400 title-font fonts1" >10</h2>
+                                        <h2 className="text-3xl font-medium text-pink-400 title-font fonts1" >{getAllUser.length}</h2>
                                         <p className="font-bold text-pink-500 " >Total User</p>
                                     </div>
 
